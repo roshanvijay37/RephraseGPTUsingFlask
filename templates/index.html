@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rephraser GPT Bot</title>
+    <!-- Add your CSS styles here -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff; /* White container background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #333; /* Dark gray text color */
+            font-family: 'Verdana', sans-serif;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: none; /* Hide the label for better aesthetics */
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        button {
+            background-color: #007bff; /* Blue button color */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .rephrased-container {
+            margin-top: 20px;
+            background-color: #f0f8ff; /* AliceBlue background for the rephrased sentence */
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .rephrased-sentence {
+            color: #333; /* Dark gray text color */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-family: 'Cursive', sans-serif; /* Change 'Cursive' to the desired font */
+            font-size: 16px;
+            color: #555; /* Gray text color */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello, I am Rephraser GPT Bot</h1>
+        <form action="{{ url_for('rephrase') }}" method="post">
+            <div class="mb-3">
+                <label for="sentence" class="form-label"></label>
+                <textarea name="sentence" id="sentence" rows="3" placeholder="Enter text to rephrase"></textarea>
+            </div>
+            <button type="submit">Rephrase</button>
+        </form>
+        {% if sentence and rephrased_sentence %}
+            <div class="rephrased-container">
+                <p class="rephrased-sentence">Rephrased Sentence: {{ rephrased_sentence }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Signature Section -->
+    <div class="signature">
+        Made with Love by Roshan Vijay Shetty
+    </div>
+</body>
+
+</html>
